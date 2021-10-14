@@ -49,7 +49,11 @@ def test(verbose: bool = False) -> dict[str, bool]:
     _tell("... TEST IS DONE - FINISHED - ...\n")
     return _test
 
+
+__dir__ = ('test', 'make_test_pack', 'check')
+
 if __name__ == "__main__":
     print("MAKE KEY ID :: FUNCTION <make_id> FROM <base> :: TEST STARTS")
     t = test(True)
     print(f"ALL: {all(t.values())}\tANY: {any(t.values())}\nPACKED: {t}")
+    exit()
