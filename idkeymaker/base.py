@@ -123,14 +123,38 @@ __dir__ = ("get_time", "rand_char", "make_id", )
 
 if __name__ == "__main__":
     from test_base import test
-    print("... MAKE ID TEST IS READY FOR START ...")
-    inp = str(input("/ START TEST ? [Y/N]: ")).lower()
-    match inp:
-        case 'y':
+    from sys import version_info
+    
+    V = version_info.major, version_info.minor
+    
+    if V[0] < 3 or V[1] < 7:
+        raise SystemError("'MINIMUM PYTHON VERSION' FOR RUN THIS TEST WITHOUT ISSUE IS '3.7' ")
+    
+    if V[1] < 10:
+        print(f"PYTHON VERSION - [{V[0]}.{V[1]}] < '3.10' - USE IF STATEMENTS\n")
+        print("... MAKE ID TEST IS READY FOR START ...")
+        inp = str(input("/ START TEST ? [Y/N]: ")).lower()
+        
+        if inp == 'y':
             ver = str(input('VERBOSE ? [Y/N]: ')).lower()
             ver = True if ver == 'y' else False
             t = test(ver)
             print(f"ALL: {all(t.values())}\tANY: {any(t.values())}\nPACKED: {t}")
             exit()
-        case _:
+        else:
             exit()
+    
+    else:
+        print(f"PYTHON VERSION - [{V[0]}.{V[1]}] ~ '3.10' - USE MATCH STATEMENTS\n")
+        print("... MAKE ID TEST IS READY FOR START ...")
+        inp = str(input("/ START TEST ? [Y/N]: ")).lower()
+        
+        match inp:
+            case 'y':
+                ver = str(input('VERBOSE ? [Y/N]: ')).lower()
+                ver = True if ver == 'y' else False
+                t = test(ver)
+                print(f"\nALL: {all(t.values())}\tANY: {any(t.values())}\nPACKED: {t}")
+                exit()
+            case _:
+                exit()
