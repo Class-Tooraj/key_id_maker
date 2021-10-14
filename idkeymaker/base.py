@@ -19,12 +19,27 @@ from typing import Iterable, Union, Generator
 
 # GIVE ME A TIME
 def get_time() -> time.time:
+    """[Get Now Time Use 'time.time()']
+
+    Returns:
+        time.time: [Now]
+    """
     return time.time()
+
 
 # RANDOM 
 def rand_char(letters: Iterable[str] = None) -> chr:
+    """[Random Choice Char From Letter Sequence if None Use UpperCase & LowerCase Alphabet]
+
+    Args:
+        letters (Iterable[str], optional): [Letter Sequence For Choice]. Defaults to None.
+
+    Returns:
+        chr: [Random Choice Returned]
+    """
     letters = letters or "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     return random.choice(letters)
+
 
 # CUSTOMIZE BINARY
 def custom_bin(value: Union[str, int]) -> str:
@@ -116,5 +131,6 @@ if __name__ == "__main__":
             ver = True if ver == 'y' else False
             t = test(ver)
             print(f"ALL: {all(t.values())}\tANY: {any(t.values())}\nPACKED: {t}")
+            exit()
         case _:
             exit()
